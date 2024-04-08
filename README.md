@@ -18,3 +18,22 @@ In this assignment you will:
 # Exercise 1 - Check the lab environment
 Before you proceed with the assignment :
 * Start MySQL server.
+
+# Exercise 2 - Design the OLTP Database
+## Task 1 - Create a database.
+Create a database named sales.
+```
+CREATE DATABASE sales
+```
+## Task 2 - Design a table named sales_data.
+Design a table named sales_data based on the sample data given.
+```
+CREATE TABLE `sales_data` (
+ `product_id` int NOT NULL,
+ `customer_id` int NOT NULL,
+ `price` int NOT NULL,
+ `quantity` mediumint NOT NULL,
+ `timestamp` date NOT NULL,
+ PRIMARY KEY (`product_id`,`customer_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+```
