@@ -27,6 +27,8 @@ CREATE DATABASE sales
 ```
 ## Task 2 - Design a table named sales_data.
 Design a table named sales_data based on the sample data given.
+![image](https://github.com/alihsan-tsdln/ibm-data-engineering-capstone/assets/91479565/55862d6b-13f9-4fc2-bd18-de484422da6a)
+
 ```
 CREATE TABLE `sales_data` (
  `product_id` int NOT NULL,
@@ -37,3 +39,4 @@ CREATE TABLE `sales_data` (
  PRIMARY KEY (`product_id`,`customer_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 ```
+Create the sales_data table in sales database.
