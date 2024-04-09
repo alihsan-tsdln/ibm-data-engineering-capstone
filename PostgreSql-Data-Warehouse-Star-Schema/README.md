@@ -154,7 +154,7 @@ In this assignment you will:
 # Prepare the your environment
 Before you start the assignment:
 
- 1. Right Click on this link and save this SQL file in you local system.
+ 1. Right Click on this [link](https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-DB0321EN-SkillsNetwork/datawarehousing/CREATE_SCRIPT.sql) and save this SQL file in you local system.
 
  2. Start PostgreSQL server
 
