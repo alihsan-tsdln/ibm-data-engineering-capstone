@@ -13,9 +13,9 @@ In this assignment you will:
  * MongoDB Server
  * MongoDB Command Line Backup Tools
 
-# Exercise 1 - Check the lab environment
+# Exercise 1 - Check your environment
 Before you proceed with the assignment :
- * Check if you have the ‘mongoimport’ and ‘mongoexport’ installed on the lab, otherwise install them.
+ * Check if you have the ‘mongoimport’ and ‘mongoexport’ installed on your environment, otherwise install them.
  * Download the catalog.json file from https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-DB0321EN-SkillsNetwork/nosql/catalog.json.
 
 ```
