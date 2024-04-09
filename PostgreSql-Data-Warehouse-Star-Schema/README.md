@@ -139,6 +139,49 @@ ALTER TABLE staging."softcartFactSales"
 END;
 ```
 
+# Data Warehouse Reporting
+
+# Scenario
+You are a data engineer hired by an ecommerce company named SoftCart.com . The company retails download only items like E-Books, Movies, Songs etc. The company has international presence and customers from all over the world. You have designed the schema for the data warehouse in the previous assignment. Data engineering is a team game. Your senior data engineer reviewed your design. Your schema design was improvised to suit the production needs of the company. In this assignment you will generate reports out of the data in the data warehouse.
+
+# Objectives
+In this assignment you will:
+
+ * Load data into Data Warehouse
+ * Write aggregation queries
+ * Create MQTs
+
+# Prepare the your environment
+Before you start the assignment:
+
+ 1. Right Click on this link and save this SQL file in you local system.
+
+ 2. Start PostgreSQL server
+
+ 3. Create a new database Test1
+
+ 4. Create the following tables
+  * DimDate
+  * DimCategory
+  * DimCountry
+  * FactSales
+
+# Loading Data
+In this exercise you will load the data into the tables. You will load the data provided by the company in csv format.
+
+## Task 1 - Load data into the dimension table DimDate
+ * Download the data from <a link="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-DB0321EN-SkillsNetwork/datawarehousing/CREATE_SCRIPT.sql">this</a> link
+ * Load the downloaded data into DimDate table.
+
+## Task 2 - Load data into the dimension table DimCategory
+
+
+
+
+
+
+
+
 
 
 
