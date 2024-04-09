@@ -170,7 +170,7 @@ Before you start the assignment:
 In this exercise you will load the data into the tables. You will load the data provided by the company in csv format.
 
 ## Task 1 - Load data into the dimension table DimDate
- * Download the data from <a link="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-DB0321EN-SkillsNetwork/datawarehousing/CREATE_SCRIPT.sql"/>this link
+ * Download the data from <a link="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-DB0321EN-SkillsNetwork/datawarehousing/CREATE_SCRIPT.sql">this</a> link
  * Load the downloaded data into DimDate table.
 
 ## Task 2 - Load data into the dimension table DimCategory
