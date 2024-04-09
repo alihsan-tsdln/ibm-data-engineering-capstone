@@ -158,13 +158,105 @@ Before you start the assignment:
 
  2. Start PostgreSQL server
 
+<pre lang="sh">
+    psql -U postgres -W -h localhost
+    # password : ${YOUR_PASSWORD}
+</pre>
+
  3. Create a new database Test1
+<pre lang="sql">
+    CREATE DATABASE test1;
+    # password : ${YOUR_PASSWORD}
+</pre>
 
  4. Create the following tables
   * DimDate
+    <pre lang="sql">
+        -- Table: public.DimDate
+    
+        -- DROP TABLE public."DimDate";
+        
+        CREATE TABLE public."DimDate"
+        (
+            dateid integer NOT NULL,
+            date date,
+            year smallint,
+            quarter smallint,
+            quartername character(2) COLLATE pg_catalog."default",
+            month smallint,
+            monthname character(9) COLLATE pg_catalog."default",
+            day smallint,
+            weekday smallint,
+            weekdayname character(9) COLLATE pg_catalog."default",
+            CONSTRAINT "DimDate_pkey" PRIMARY KEY (dateid)
+        )
+        
+        TABLESPACE pg_default;
+        
+        ALTER TABLE public."DimDate"
+            OWNER to postgres;
+        
+        COMMENT ON TABLE public."DimDate"
+            IS 'dateid,date,Year,Quarter,QuarterName,Month,Monthname,Day,Weekday,WeekdayName';
+    </pre>
+    
   * DimCategory
+    <pre lang="sql">
+        -- Table: public.DimCategory
+    
+        -- DROP TABLE public."DimCategory";
+        
+        CREATE TABLE public."DimCategory"
+        (
+            categoryid integer NOT NULL,
+            category text COLLATE pg_catalog."default",
+            CONSTRAINT "DimCategory_pkey" PRIMARY KEY (categoryid)
+        )
+        
+        TABLESPACE pg_default;
+        
+        ALTER TABLE public."DimCategory"
+            OWNER to postgres;
+    </pre>
   * DimCountry
+    <pre lang="sql">
+        -- Table: public.DimCountry
+
+        -- DROP TABLE public."DimCountry";
+        
+        CREATE TABLE public."DimCountry"
+        (
+            countryid integer NOT NULL,
+            country text COLLATE pg_catalog."default",
+            CONSTRAINT "DimCountry_pkey" PRIMARY KEY (countryid)
+        )
+        
+        TABLESPACE pg_default;
+        
+        ALTER TABLE public."DimCountry"
+            OWNER to postgres;
+    </pre>
   * FactSales
+    <pre lang="sql">
+        -- Table: public.FactSales
+
+        -- DROP TABLE public."FactSales";
+        
+        CREATE TABLE public."FactSales"
+        (
+            orderid integer NOT NULL,
+            dateid integer,
+            countryid integer,
+            categoryid integer,
+            amount integer,
+            CONSTRAINT "FactSales_pkey" PRIMARY KEY (orderid)
+        )
+        
+        TABLESPACE pg_default;
+        
+        ALTER TABLE public."FactSales"
+            OWNER to postgres;
+    </pre>
 
 # Loading Data
 In this exercise you will load the data into the tables. You will load the data provided by the company in csv format.
