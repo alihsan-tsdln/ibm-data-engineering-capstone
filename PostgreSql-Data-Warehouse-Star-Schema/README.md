@@ -169,43 +169,38 @@ Before you start the assignment:
     # password : ${YOUR_PASSWORD}
 </pre>
 
+Connect test1 database.
+
+<pre lang="sh">
+    \c test1
+</pre>
+
  4. Create the following tables
   * DimDate
     <pre lang="sql">
-        -- Table: public.DimDate
-    
-        -- DROP TABLE public."DimDate";
-        
         CREATE TABLE public."DimDate"
         (
             dateid integer NOT NULL,
             date date,
-            year smallint,
-            quarter smallint,
-            quartername character(2) COLLATE pg_catalog."default",
-            month smallint,
-            monthname character(9) COLLATE pg_catalog."default",
-            day smallint,
-            weekday smallint,
-            weekdayname character(9) COLLATE pg_catalog."default",
+            "Year" smallint,
+            "Quarter" smallint,
+            "QuarterName" character(2) COLLATE pg_catalog."default",
+            "Month" smallint,
+            "Monthname" character(9) COLLATE pg_catalog."default",
+            "Day" smallint,
+            "Weekday" smallint,
+            "WeekdayName" character(9) COLLATE pg_catalog."default",
             CONSTRAINT "DimDate_pkey" PRIMARY KEY (dateid)
         )
         
         TABLESPACE pg_default;
         
         ALTER TABLE public."DimDate"
-            OWNER to postgres;
-        
-        COMMENT ON TABLE public."DimDate"
-            IS 'dateid,date,Year,Quarter,QuarterName,Month,Monthname,Day,Weekday,WeekdayName';
+        OWNER to postgres;
     </pre>
     
   * DimCategory
     <pre lang="sql">
-        -- Table: public.DimCategory
-    
-        -- DROP TABLE public."DimCategory";
-        
         CREATE TABLE public."DimCategory"
         (
             categoryid integer NOT NULL,
@@ -220,10 +215,6 @@ Before you start the assignment:
     </pre>
   * DimCountry
     <pre lang="sql">
-        -- Table: public.DimCountry
-
-        -- DROP TABLE public."DimCountry";
-        
         CREATE TABLE public."DimCountry"
         (
             countryid integer NOT NULL,
@@ -238,10 +229,6 @@ Before you start the assignment:
     </pre>
   * FactSales
     <pre lang="sql">
-        -- Table: public.FactSales
-
-        -- DROP TABLE public."FactSales";
-        
         CREATE TABLE public."FactSales"
         (
             orderid integer NOT NULL,
@@ -265,23 +252,39 @@ In this exercise you will load the data into the tables. You will load the data 
  * Download the data from [this link](https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-DB0321EN-SkillsNetwork/datawarehousing/data/DimDate.csv)
  * Load the downloaded data into DimDate table.
 
+<pre lang="sql">
+    COPY "DimDate" FROM '{$CSV_FILES_PATH}/DimDate.csv' CSV HEADER;
+</pre>
+
 ## Task 2 - Load data into the dimension table DimCategory
  * Download the data from [this link](https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-DB0321EN-SkillsNetwork/datawarehousing/DimCategory.csv)
  * Load the downloaded data into DimCategory table.
+ <pre lang="sql">
+     COPY "DimCategory" FROM '{$CSV_FILES_PATH}/DimCategory.csv' CSV HEADER;
+ </pre>
 
 ## Task 3 - Load data into the dimension table DimCountry
  * Download the data from [this link](https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-DB0321EN-SkillsNetwork/datawarehousing/DimCountry.csv)
  * Load the downloaded data into DimCountry table.
-
+ <pre lang="sql">
+    COPY "DimCountry" FROM '{$CSV_FILES_PATH}/DimCountry.csv' CSV HEADER;
+ </pre>
 ## Task 4 - Load data into the fact table FactSales
  * Download the data from [this link](https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-DB0321EN-SkillsNetwork/datawarehousing/FactSales.csv)
  * Load this data into FactSales table.
-
+ <pre lang="sql">
+     COPY "FactSales" FROM '{$CSV_FILES_PATH}/FactSales.csv' CSV HEADER;
+ </pre>
 # Queries for data analytics
 In this exercise you will query the data you have loaded in the previous exercise.
 
 ## Task 5 - Create a grouping sets query
 Create a grouping sets query using the columns country, category, totalsales.
+<pre lang="sql">
+    SELECT countryid, categoryid, SUM(amount) AS total_sales
+    FROM "FactSales"
+    GROUP BY GROUPING SETS ((countryid), (categoryid), (countryid, categoryid));
+</pre>
 
 ## Task 6 - Create a rollup query
 Create a rollup query using the columns year, country, and totalsales.
