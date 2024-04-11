@@ -237,6 +237,18 @@ Connect test1 database.
             categoryid integer,
             amount integer,
             CONSTRAINT "FactSales_pkey" PRIMARY KEY (orderid)
+            CONSTRAINT category_fk FOREIGN KEY (categoryid)
+                REFERENCES public."DimCategory" (categoryid) MATCH SIMPLE
+                ON UPDATE NO ACTION
+                ON DELETE NO ACTION,
+            CONSTRAINT countryid_fk FOREIGN KEY (countryid)
+                REFERENCES public."DimCountry" (countryid) MATCH SIMPLE
+                ON UPDATE NO ACTION
+                ON DELETE NO ACTION,
+            CONSTRAINT dateid_fk FOREIGN KEY (dateid)
+                REFERENCES public."DimDate" (dateid) MATCH SIMPLE
+                ON UPDATE NO ACTION
+                ON DELETE NO ACTION
         )
         
         TABLESPACE pg_default;
