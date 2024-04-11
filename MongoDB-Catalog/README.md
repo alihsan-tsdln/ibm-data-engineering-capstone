@@ -53,7 +53,7 @@ mongoimport -d catalog -c electronics --file {$YOUR_JSON_FILE_PATH/catalog.json}
 mongosh -u {$YOUR_USERNAME} -p --authenticationDatabase admin
 # enter password: {$YOUR_PASSWORD}
 </pre>
-<pre lang="mongo">
+<pre lang="language-mongo">
 show databases
 </pre>
   
