@@ -281,20 +281,42 @@ In this exercise you will query the data you have loaded in the previous exercis
 ## Task 5 - Create a grouping sets query
 Create a grouping sets query using the columns country, category, totalsales.
 <pre lang="sql">
-    SELECT countryid, categoryid, SUM(amount) AS total_sales
-    FROM "FactSales"
-    GROUP BY GROUPING SETS ((countryid), (categoryid), (countryid, categoryid));
+    SELECT country, category, SUM(amount) AS totalsales
+    FROM "FactSales" s
+    INNER JOIN "DimCountry" ON "DimCountry".countryid = s.countryid
+    INNER JOIN "DimCategory" ON "DimCategory".categoryid = s.categoryid
+    GROUP BY GROUPING SETS((country,category),(country),(category));
 </pre>
 
 ## Task 6 - Create a rollup query
 Create a rollup query using the columns year, country, and totalsales.
+<pre lang="sql">
+    SELECT "Year",country,SUM(amount)
+    FROM "FactSales" s
+    INNER JOIN "DimDate" d ON s.dateid = d.dateid
+    INNER JOIN "DimCountry" dc ON s.countryid = dc.countryid 
+    GROUP BY ROLLUP("Year",country);
+</pre>
 
 ## Task 7 - Create a cube query
 Create a cube query using the columns year, country, and average sales.
+<pre lang="sql">
+    SELECT "Year", country, AVG(amount) AS averagesales
+    FROM "FactSales" s
+    INNER JOIN "DimCountry" dc ON dc.countryid = s.countryid
+    INNER JOIN "DimDate" dd ON dd.dateid = s.dateid
+    GROUP BY CUBE("Year",country);
+</pre>
 
 ## Task 8 - Create an MQT
 Create an MQT named total_sales_per_country that has the columns country and total_sales.
-
+<pre lang="sql">
+    CREATE MATERIALIZED VIEW total_sales_per_country AS
+    SELECT country, SUM(amount) as total_sales
+    FROM "FactSales" s
+    INNER JOIN "DimCountry" d ON s.countryid = d.countryid
+    GROUP BY country
+</pre>
 
 
 
